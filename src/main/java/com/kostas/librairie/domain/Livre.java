@@ -23,11 +23,7 @@ public class Livre {
     @Enumerated(EnumType.STRING)
     private GenreLitteraire genreLitteraire;
 
-    @ManyToOne
-    Bibliotheque bibliotheque;
-
-    public Livre(Bibliotheque bibliotheque, Long id, String titre, String auteur, int nbPages, GenreLitteraire genreLitteraire) {
-        this.bibliotheque = bibliotheque;
+    public Livre(Long id, String titre, String auteur, int nbPages, GenreLitteraire genreLitteraire) {
         this.id = id;
         this.titre = titre;
         this.auteur = auteur;
@@ -39,14 +35,6 @@ public class Livre {
     }
 
     public Livre(Long id, String auteur, String titre, GenreLitteraire genreLitteraire, int nbPages) {
-    }
-
-    public Bibliotheque getBibliotheque() {
-        return bibliotheque;
-    }
-
-    public void setBibliotheque(Bibliotheque bibliotheque) {
-        this.bibliotheque = bibliotheque;
     }
 
     public Long getId() {
