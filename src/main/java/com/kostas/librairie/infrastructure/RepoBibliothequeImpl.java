@@ -14,11 +14,15 @@ public class RepoBibliothequeImpl implements IBibliothequeRepo {
     @Autowired
     private IBibliothequeJpaRepo bibliothequeJpaRepo;
 
+    @Autowired
+    private BibliothequeEntityMapper mapper;
+
     @Override
     public Bibliotheque save(Bibliotheque bibliotheque) {
-        Bibliotheque bibliotheque1 = bibliothequeJpaRepo.findByBid(bibliotheque.getBid());
-        if (bibliotheque1 ==  null){
-            bibliothequeJpaRepo.save(bibliotheque);
+        BibliothequeEntity bibliothequeEntity = bibliothequeJpaRepo.findByBid(bibliotheque.getBid());
+        if (bibliothequeEntity ==  null){
+            bibliothequeEntity = mapper.mapToEntity(bibliotheque);
+            bibliothequeJpaRepo.save(bibliothequeEntity);
             return bibliotheque;
         } else {
             throw new BibliothequeAlreadyExistException(bibliotheque.getBid());
@@ -28,8 +32,8 @@ public class RepoBibliothequeImpl implements IBibliothequeRepo {
 
     @Override
     public Bibliotheque findByBid(Long bid) {
-        Bibliotheque bibliotheque = bibliothequeJpaRepo.findByBid(bid);
-        return bibliotheque;
+        BibliothequeEntity bibliothequeEntity = bibliothequeJpaRepo.findByBid(bid);
+        return mapper.mapToDomain(bibliothequeEntity);
     }
 
 

@@ -18,7 +18,7 @@ public class BibliothequeDtoMapper extends AbstractMapper<BibliothequeDto, Bibli
 
     @Override
     public Bibliotheque mapToDomain(BibliothequeDto dto) {
-        final Bibliotheque bibliotheque = new Bibliotheque(dto.getAdresse(), dto.getType());
+        final Bibliotheque bibliotheque = new Bibliotheque(dto.getType(), dto.getAdresse());
         return bibliotheque;
     }
 }

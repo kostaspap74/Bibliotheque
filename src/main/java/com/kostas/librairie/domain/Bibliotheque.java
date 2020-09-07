@@ -1,32 +1,13 @@
 package com.kostas.librairie.domain;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import java.util.Set;
 
-@Entity
-@Table(name ="Bibliotheque")
+
 public class Bibliotheque {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bid;
-
-    //private String id;
-    @Enumerated(EnumType.STRING)
     private Type type;
-    @Embedded
     private Adresse adresse;
-    @Embedded
     private Director director;
-
-    @OneToMany
     Set<Livre> livres;
 
     public Bibliotheque(Long bid, Type type, Adresse adresse, Director director, Set<Livre> livres) {
@@ -37,10 +18,12 @@ public class Bibliotheque {
         this.livres = livres;
     }
 
-    public Bibliotheque(Adresse adresse, Type type) {
+    public Bibliotheque() {
     }
 
-    public Bibliotheque() {
+    public Bibliotheque(Type type, Adresse adresse) {
+        this.type = type;
+        this.adresse = adresse;
     }
 
     public void update(Bibliotheque bibliothequemodifiee) {
