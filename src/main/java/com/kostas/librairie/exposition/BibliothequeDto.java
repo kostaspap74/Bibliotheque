@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.kostas.librairie.domain.Adresse;
 import com.kostas.librairie.domain.Livre;
 import com.kostas.librairie.domain.Type;
+import com.sun.istack.NotNull;
 
 import java.util.List;
 import java.util.Set;
@@ -12,14 +13,13 @@ public class BibliothequeDto {
     @JsonProperty
     private Type type;
     @JsonProperty
+    @NotNull
     private Adresse adresse;
-    @JsonProperty
-    List<LivreDTO> livreDTOList;
 
-    public BibliothequeDto(Type type, Adresse adresse, List<LivreDTO> livreDTOList) {
+
+    public BibliothequeDto(Type type, Adresse adresse) {
         this.type = type;
         this.adresse = adresse;
-        this.livreDTOList = livreDTOList;
     }
 
     public BibliothequeDto() {
@@ -43,11 +43,4 @@ public class BibliothequeDto {
         this.adresse = adresse;
     }
 
-    public List<LivreDTO> getLivreDTOList() {
-        return livreDTOList;
-    }
-
-    public void setLivreDTOList(Set<Livre> livres) {
-        this.livreDTOList = livreDTOList;
-    }
 }

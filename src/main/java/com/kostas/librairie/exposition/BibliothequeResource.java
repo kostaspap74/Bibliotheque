@@ -1,7 +1,7 @@
 package com.kostas.librairie.exposition;
 
-import com.kostas.librairie.domain.Bibliotheque;
 import com.kostas.librairie.application.IBibliothequeManagement;
+import com.kostas.librairie.domain.Bibliotheque;
 import com.kostas.librairie.domain.BibliothequeNotFoundException;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -26,12 +27,11 @@ public class BibliothequeResource {
 
     @PostMapping(value = "/librairie/create",consumes = { "application/json" }, produces = { "application/json" })
     @ResponseStatus(HttpStatus.CREATED)
-    public Bibliotheque createLibrary(@NotNull @RequestBody final Bibliotheque bibliotheque) {
-        if (bibliotheque != null) {
-            iBibliothequeManagement.create(bibliotheque);
-        }
-        return bibliotheque;
+    public void createLibrary(@Valid @NotNull @RequestBody final BibliothequeDto bibliothequeDto) {
+
+            iBibliothequeManagement.create(bibliothequeDto.getAdresse(), bibliothequeDto.getType());
     }
+
 
     @GetMapping(value = "/listeid/{bid}" , produces = {"application/json"})
     public ResponseEntity<Bibliotheque> rechercheLibrairieParBid (@PathVariable("bid") Long bid) {

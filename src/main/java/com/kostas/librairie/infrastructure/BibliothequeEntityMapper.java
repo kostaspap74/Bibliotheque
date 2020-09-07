@@ -17,8 +17,7 @@ public class BibliothequeEntityMapper extends AbstractMapper<Bibliotheque, Bibli
         bibliothequeEntity.setAdresse(bibliotheque.getAdresse());
         bibliothequeEntity.setBid(bibliotheque.getBid());
         bibliothequeEntity.setDirector(bibliotheque.getDirector());
-        bibliothequeEntity.setLivres(bibliotheque.
-                getLivres());
+        bibliothequeEntity.setLivres(bibliotheque.getLivres());
         bibliothequeEntity.setType(bibliotheque.getType());
         return bibliothequeEntity;
     }

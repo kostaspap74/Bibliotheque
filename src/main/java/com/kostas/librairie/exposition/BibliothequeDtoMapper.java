@@ -12,7 +12,6 @@ public class BibliothequeDtoMapper extends AbstractMapper<BibliothequeDto, Bibli
         final BibliothequeDto bibliothequeDto = new BibliothequeDto();
         bibliothequeDto.setAdresse(bibliotheque.getAdresse());
         bibliothequeDto.setType(bibliotheque.getType());
-        bibliothequeDto.setLivreDTOList(bibliotheque.getLivres());
         return bibliothequeDto;
     }
 
