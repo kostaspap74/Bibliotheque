@@ -1,5 +1,6 @@
 package com.kostas.librairie.application;
 
+import com.kostas.librairie.DDD;
 import com.kostas.librairie.domain.Adresse;
 import com.kostas.librairie.domain.Bibliotheque;
 import com.kostas.librairie.domain.IBibliothequeRepo;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+@DDD.ApplicationService
 @Service
 @Transactional
 public class BibliothequeManagementImpl implements IBibliothequeManagement {

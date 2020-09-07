@@ -1,5 +1,6 @@
 package com.kostas.librairie.infrastructure;
 
+import com.kostas.librairie.DDD;
 import com.kostas.librairie.domain.Bibliotheque;
 import com.kostas.librairie.domain.BibliothequeAlreadyExistException;
 import com.kostas.librairie.domain.IBibliothequeRepo;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
+@DDD.RepositoryImpl
 public class RepoBibliothequeImpl implements IBibliothequeRepo {
 
     @Autowired

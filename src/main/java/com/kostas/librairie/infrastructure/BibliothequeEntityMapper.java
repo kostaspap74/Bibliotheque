@@ -1,8 +1,10 @@
 package com.kostas.librairie.infrastructure;
 
+import com.kostas.librairie.DDD;
 import com.kostas.librairie.domain.Bibliotheque;
 import org.springframework.stereotype.Service;
 
+@DDD.InfrastructureServiceImpl
 @Service
 public class BibliothequeEntityMapper extends AbstractMapper<Bibliotheque, BibliothequeEntity> {
     @Override
